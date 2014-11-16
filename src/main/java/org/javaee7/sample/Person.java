@@ -9,17 +9,18 @@ import javax.ws.rs.PathParam;
 @RequestScoped
 @Path("persons")
 public class Person {
-	
-	@Inject PersonDatabase database;
-	
-	@GET
-	public String get() {
-		return database.currentList().toString();
-	}
-	
-	@GET
-	@Path("{id}")
-	public String get(@PathParam("id")int id) {
-		return database.getPerson(id);
-	}
+
+    @Inject
+    PersonDatabase database;
+
+    @GET
+    public String get() {
+        return database.currentList().toString();
+    }
+
+    @GET
+    @Path("{id}")
+    public String get(@PathParam("id") int id) {
+        return database.getPerson(id);
+    }
 }
