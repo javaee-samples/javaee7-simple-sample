@@ -1,26 +1,31 @@
 package org.javaee7.sample;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@RequestScoped
-@Path("persons")
+/**
+ * @author arungupta
+ */
+@XmlRootElement
 public class Person {
+    private String name;
 
-    @Inject
-    PersonDatabase database;
-
-    @GET
-    public String get() {
-        return database.currentList().toString();
+    public Person() {
     }
 
-    @GET
-    @Path("{id}")
-    public String get(@PathParam("id") int id) {
-        return database.getPerson(id);
+    public Person(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

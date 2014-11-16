@@ -3,9 +3,11 @@ package org.javaee7.sample;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.StringTokenizer;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -37,24 +39,25 @@ public class PersonTest {
     public void setUp() throws MalformedURLException {
         Client client = ClientBuilder.newClient();
         target = client.target(URI.create(new URL(base, "resources/persons").toExternalForm()));
+        target.register(Person.class);
     }
 
     /**
      * Test of get method, of class Person.
      */
-//    @Test
+    @Test
     public void testGetAll() {
-        String[] list = target.request().get(String[].class);
-        assertEquals(8, list.length);
+        Person[] persons = target.request().get(Person[].class);
+        assertEquals(8, persons.length);
 
-        assertEquals("Penny", list[0]);
-        assertEquals("Leonard", list[1]);
-        assertEquals("Sheldon", list[2]);
-        assertEquals("Amy", list[3]);
-        assertEquals("Howard", list[4]);
-        assertEquals("Bernadette", list[5]);
-        assertEquals("Raj", list[6]);
-        assertEquals("Priya", list[7]);
+        assertEquals("Penny", persons[0].getName());
+        assertEquals("Leonard", persons[1].getName());
+        assertEquals("Sheldon", persons[2].getName());
+        assertEquals("Amy", persons[3].getName());
+        assertEquals("Howard", persons[4].getName());
+        assertEquals("Bernadette", persons[5].getName());
+        assertEquals("Raj", persons[6].getName());
+        assertEquals("Priya", persons[7].getName());
     }
 
     /**
@@ -64,11 +67,11 @@ public class PersonTest {
     public void testGetOne() {
         WebTarget target2 = target.path("{id}");
         
-        String response = target2.resolveTemplate("id", 0).request().get(String.class);
-        assertEquals("Penny", response);
+        Person response = target2.resolveTemplate("id", 0).request().get(Person.class);
+        assertEquals("Penny", response.getName());
         
-        response = target2.resolveTemplate("id", 1).request().get(String.class);
-        assertEquals("Leonard", response);
+        response = target2.resolveTemplate("id", 1).request().get(Person.class);
+        assertEquals("Leonard", response.getName());
     }
 
 }

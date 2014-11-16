@@ -10,35 +10,30 @@ import javax.ws.rs.NotFoundException;
 @Singleton
 public class PersonDatabase {
 
-    List<String> persons;
+    List<Person> persons;
 
     @PostConstruct
     public void init() {
-        persons = Arrays.asList("Penny", "Leonard", "Sheldon", "Amy", "Howard", "Bernadette", "Raj", "Priya");
+        persons = Arrays.asList(
+                new Person("Penny"), 
+                new Person("Leonard"), 
+                new Person("Sheldon"), 
+                new Person("Amy"), 
+                new Person("Howard"), 
+                new Person("Bernadette"), 
+                new Person("Raj"), 
+                new Person("Priya"));
     }
 
-    public List<String> currentList() {
-        return persons;
+    public Person[] currentList() {
+        return persons.toArray(new Person[0]);
     }
 
-    public String getPerson(int id) {
+    public Person getPerson(int id) {
         if (id < persons.size()) {
             return persons.get(id);
         }
 
         throw new NotFoundException("Person with id \"" + id + "\" not found.");
     }
-
-    public void addPerson(String name) {
-        persons.add(name);
-    }
-
-    public void deletePerson(String name) {
-        if (persons.contains(name)) {
-            persons.remove(name);
-        }
-
-        throw new NotFoundException("Person with name \"" + name + "\" not found.");
-    }
-
 }
