@@ -40,6 +40,18 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.5.Final</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxb-provider</artifactId>
+            <version>3.0.5.Final</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>helloworld</finalName>
@@ -87,19 +99,31 @@
                     <version>8.1.0.Final</version>
                     <scope>test</scope>
                 </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>arquillian-wildfly-openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.14.1</version>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <arquillian.launch>arquillian-wildfly-openshift</arquillian.launch>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
                 <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-client</artifactId>
-                    <version>3.0.5.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-jaxb-provider</artifactId>
-                    <version>3.0.5.Final</version>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-openshift</artifactId>
+                    <version>1.0.0.Final-SNAPSHOT</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
-        </profile>
+        </profile>        
     </profiles>
 </project>
