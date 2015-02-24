@@ -79,25 +79,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.5</version>
-                        <executions>
-                            <execution>
-                                <id>default-deploy</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>deploy</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <serverId>nexus-releases</serverId>
-                            <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
-                            <skipStaging>true</skipStaging>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>2.10.1</version>
@@ -105,11 +86,27 @@
                             <show>private</show>
                             <nohelp>true</nohelp>
                         </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>2.4</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -118,8 +115,9 @@
                         <configuration>
                             <tagNameFormat>v@{project.version}</tagNameFormat>
                             <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <releaseProfiles>release</releaseProfiles>
                         </configuration>
-                    </plugin>                
+                    </plugin>
                 </plugins>
             </build>
         </profile>
