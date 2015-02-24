@@ -16,13 +16,19 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+    </dependencies>    
     <scm>
         <connection>scm:git:https://github.com/javaee-samples/javaee7-simple-sample.git</connection>
         <url>https://github.com/javaee-samples/javaee7-simple-sample.git</url>
         <developerConnection>scm:git:https://github.com/javaee-samples/javaee7-simple-sample.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
+    <developers>
+        <developer>
+            <name>Arun Gupta</name>
+            <email>arun.gupta@gmail.com</email>
+        </developer>
+    </developers>
     <distributionManagement>
         <repository>
             <id>deployment</id>
@@ -73,6 +79,16 @@
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <releaseProfiles>releases</releaseProfiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.1</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
                     <releaseProfiles>releases</releaseProfiles>
                 </configuration>
             </plugin>
