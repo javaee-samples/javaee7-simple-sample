@@ -9,6 +9,7 @@ This is a trivial Java EE 7 sample.
 . Start WildFly as: `./bin/standalone.sh`
 . Deploy to WildFly: `mvn wildfly:deploy`
 . Install to local repo: `mvn install`
-. Deploy SNAPSHOT to local Nexus: `mvn deploy -P release`
-. Deploy RELEASE to local Nexus: `mvn release:prepare release:perform -P release`
+. Deploy SNAPSHOT to local Nexus: `mvn deploy`
+. Deploy RELEASE to local Nexus: `mvn release:prepare release:perform`
+. Deploy RELEASE to local Nexus (attach sources and javadoc): `mvn release:prepare release:perform -P release`
 
