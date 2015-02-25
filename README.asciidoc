@@ -7,9 +7,17 @@ This is a trivial Java EE 7 sample.
   http://download.jboss.org/wildfly/8.2.0.Final/wildfly-8.2.0.Final.zip
   and unzip.
 . Start WildFly as: `./bin/standalone.sh`
-. Deploy to WildFly: `mvn wildfly:deploy`
-. Install to local repo: `mvn install`
-. Deploy SNAPSHOT to local Nexus: `mvn deploy`
-. Deploy RELEASE to local Nexus: `mvn release:prepare release:perform`
-. Deploy RELEASE to local Nexus (attach sources and javadoc): `mvn release:prepare release:perform -P release`
+. Deploy application WAR to WildFly: `mvn wildfly:deploy`
+. Install to local Maven repository: `mvn install`
+.. repo in '~/.m2/repository'
+. Deploy SNAPSHOT version to local Nexus: `mvn deploy`
+. Deploy SNAPSHOT version to local Nexus including javadoc and sources
+jars: `mvn deploy -P release`
+. Perform RELEASE : `mvn release:prepare release:perform`
+.. versions changes and tag committed to github
+.. all tests run
+* deployment to local Nexus including WAR, javadoc and sources
+. Alternatively to deploy RELEASE version (e.g. 2.0) to Nexus without github integration
+.. 'mvn versions:set -DnewVersion=2.0'
+.. 'mvn deploy -P release'
 
