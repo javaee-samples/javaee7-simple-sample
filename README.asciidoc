@@ -14,10 +14,11 @@ This is a trivial Java EE 7 sample.
 . Deploy SNAPSHOT version to local Nexus including javadoc and sources
 jars: `mvn deploy -P release`
 . Perform RELEASE : `mvn release:prepare release:perform`
-.. versions changes and tag committed to github
+.. versions changes and tag are committed to github
 .. all tests run
-* deployment to local Nexus including WAR, javadoc and sources
+.. WAR is deployed to Wildfly
+.. deployment to local Nexus including WAR, javadoc and sources
 . Alternatively to deploy RELEASE version (e.g. 2.0) to Nexus without github integration
-.. 'mvn versions:set -DnewVersion=2.0'
-.. 'mvn deploy -P release'
+.. `mvn versions:set -DnewVersion=2.0`
+.. `mvn deploy -P release`
 
