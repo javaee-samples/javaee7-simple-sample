@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.javaee7.sample</groupId>
     <artifactId>javaee7-simple-sample</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.7</version>
     <packaging>war</packaging>
     <name>javaee7-simple-sample</name>
     <properties>
@@ -21,7 +21,7 @@
         <connection>scm:git:https://github.com/mosabua/javaee7-simple-sample.git</connection>
         <url>https://github.com/mosabua/javaee7-simple-sample.git</url>
         <developerConnection>scm:git:https://github.com/mosabua/javaee7-simple-sample.git</developerConnection>
-        <tag>v1.5</tag>
+        <tag>v1.7</tag>
     </scm>
     <developers>
         <developer>
