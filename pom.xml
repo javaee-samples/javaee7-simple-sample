@@ -16,7 +16,7 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>    
+    </dependencies>
     <scm>
         <connection>scm:git:https://github.com/javaee-samples/javaee7-simple-sample.git</connection>
         <url>https://github.com/javaee-samples/javaee7-simple-sample.git</url>
@@ -42,6 +42,7 @@
         </snapshotRepository>
     </distributionManagement>
     <build>
+    	<finalName>javaee7-simple-sample</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
